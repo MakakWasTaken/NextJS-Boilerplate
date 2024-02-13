@@ -1,0 +1,15 @@
+{
+  "home": "Home",
+  "about": "About",
+  "contact": "Contact",
+  "sign_in": "Sign In",
+  "dashboard": "Dashboard",
+  "logout": "Logout",
+  "overview": "Overview",
+  "settings": "Settings",
+  "operator": "Operator",
+  "chauffeur": "Chauffeur",
+  "weighings": "Weighings",
+  "open_list": "Open List",
+  "tutorial": "Tutorial"
+}
