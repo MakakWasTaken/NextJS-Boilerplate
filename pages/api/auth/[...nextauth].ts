@@ -211,9 +211,11 @@ export const authOptions = (
   callbacks: {
     signIn: async ({ user }) => {
       // Check if this sign in callback is being called in the credentials authentication flow. If so, use the next-auth adapter to create a session entry in the database (SignIn is called after authorize so we can safely assume the user is valid and already authenticated).
+      const nextauth = req.query.nextauth as string
       if (
-        req.query.nextauth?.includes('callback') &&
-        req.query.nextauth?.includes('credentials') &&
+        typeof nextauth === 'string' &&
+        nextauth?.includes('callback') &&
+        nextauth?.includes('credentials') &&
         req.method === 'POST'
       ) {
         if (user) {
@@ -300,9 +302,11 @@ export const authOptions = (
   },
   jwt: {
     encode: (params) => {
+      const nextauth = req.query.nextauth as string
       if (
-        req.query.nextauth?.includes('callback') &&
-        req.query.nextauth?.includes('credentials') &&
+        typeof nextauth === 'string' &&
+        nextauth?.includes('callback') &&
+        nextauth?.includes('credentials') &&
         req.method === 'POST'
       ) {
         const cookies = new Cookies(req, res)
@@ -316,9 +320,11 @@ export const authOptions = (
       return encode(params)
     },
     decode: async (params) => {
+      const nextauth = req.query.nextauth as string
       if (
-        req.query.nextauth?.includes('callback') &&
-        req.query.nextauth?.includes('credentials') &&
+        typeof nextauth === 'string' &&
+        nextauth?.includes('callback') &&
+        nextauth?.includes('credentials') &&
         req.method === 'POST'
       ) {
         return null
